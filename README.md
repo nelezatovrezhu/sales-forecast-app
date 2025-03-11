@@ -1,44 +1,44 @@
 
 # Sales Forecast App
 
-Это веб-приложение для прогнозирования объема продаж с использованием машинного обучения.
+It is a web application for predicting sales volume using machine learning.
 
-## Требования
+## Requirements
 
 - Python 3.9+
-- Docker (опционально)
+- Docker (optional)
 
-## Установка
+## Installation
 
-### Локальная установка
+### Local installation
 
-1. Клонируйте репозиторий:
+1. Clone the repository:
    ```bash
    git clone https://github.com/nelezatovrezhu/sales-forecast-app.git
    cd sales-forecast-app
 
-2. Установите зависимости:
+2. Install the dependencies:
     pip install -r requirements.txt
 
-3. Запустите приложение:
+3. Launch the app:
     python api/app.py
 
-Приложение будет доступно по адресу: http://localhost:5000
+The application will be available at: http://127.0.0.1:5000/
 
-#### Использование Docker
+#### Using Docker
 
-1. Соберите Docker-образ:
+1. Build a Docker image:
 
     docker build -t sales-forecast-app .
-2. Запустите контейнер:
+2. Launch the container:
 
     docker run -d -p 5000:5000 --name sales-forecast-container sales-forecast-app
 
-Приложение будет доступно по адресу: http://localhost:5000
+The application will be available at: http://127.0.0.1:5000/
 
-Как использовать
-Загрузите исторические данные в формате CSV (пример файла: example.csv).
-Нажмите кнопку "Обучить"
-Выберите сценарий прогноза или введите собственные данные.
-Нажмите кнопку "Предсказать" для получения прогноза.
+How to use
+Upload historical data in CSV format (sample file: example.csv).
+Click the "Train" button
+Select a forecast scenario or enter your own data.
+Click the "Predict" button to get a forecast.
 
