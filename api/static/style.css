@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.upload-section, .prediction-section, .manual-input, .plot-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.example-link a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.submit-btn, .secondary-btn, .primary-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.submit-btn:hover, .secondary-btn:hover, .primary-btn:hover {
+    background-color: #218838;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.result-box {
+    background-color: #e6ffe6;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.plot-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.example-table {
+    margin: 20px 0;
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку */
+}
+
+.example-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 100%; /* Устанавливаем минимальную ширину таблицы */
+}
+
+.example-table th, .example-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    word-break: break-all; /* Разрешаем перенос текста внутри ячеек */
+}
+
+.example-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.example-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Добавляем стиль для информационного сообщения */
+.info-message {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    border-radius: 4px;
+    color: #0c5460;
+}
+
+.predictions-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+.predictions-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.predictions-box li {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #fff;
+    border-left: 5px solid #4CAF50;
+}

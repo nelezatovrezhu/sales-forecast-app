@@ -1,0 +1,128 @@
+<!-- В шаблоне index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Прогноз продаж</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Прогнозирование объема продаж</h1>
+        
+        <!-- Форма для загрузки CSV -->
+        <div class="upload-section">
+            <h2>Загрузите исторические данные</h2>
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <input type="file" name="file" accept=".csv" required>
+                <input type="submit" value="Обучить модель" class="primary-btn">
+            </form>
+            <p class="example-link">Пример CSV: <a href="{{ url_for('static', filename='example.csv') }}" download>sales_example.csv</a></p>
+            
+            <!-- Пример таблицы -->
+            <div class="example-table">
+                <h3>Пример данных:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>ID продукта</th>
+                            <th>Объем продаж</th>
+                            <th>Цена сырья</th>
+                            <th>Цена топлива</th>
+                            <th>Курс валюты</th>
+                            <th>Индекс спроса</th>
+                            <th>Производственная мощность</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2001-10-31</td>
+                            <td>Aluminium</td>
+                            <td>290</td>
+                            <td>83.94</td>
+                            <td>59.18</td>
+                            <td>71.60</td>
+                            <td>89</td>
+                            <td>1628</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% if training_message %}
+            <div class="training-message">
+                <p>{{ training_message }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if model_ready %}
+        <div class="prediction-section">
+            <h2>Сценарии прогноза на следующий месяц</h2>
+            <form method="POST" action="/predict-scenario">
+                <select name="scenario" class="scenario-select">
+                    <option value="average" selected>Средний</option>
+                    <option value="optimistic">Оптимистичный</option>
+                    <option value="pessimistic">Пессимистичный</option>
+                </select>
+                <input type="submit" value="Предсказать" class="secondary-btn">
+            </form>
+            
+            <!-- Вывод сценарных прогнозов -->
+            <div class="predictions-box">
+                <h3>Прогнозы по сценариям:</h3>
+                {% if predictions %}
+                <ul>
+                    {% for pred in predictions %}
+                    <li>
+                        <strong>{{ pred.scenario }}</strong> | 
+                        Дата: {{ pred.date }} | 
+                        Прогноз: <span class="prediction-value">{{ pred.prediction }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Нет прогнозов</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Форма для ручного ввода -->
+        <div class="manual-input">
+            <h2>Ручной ввод данных для прогноза</h2>
+            <form method="POST" action="/predict">
+                <div class="form-group">
+                    <label>Цена сырья:</label>
+                    <input type="number" step="0.01" name="raw_material_price" required>
+                </div>
+                <div class="form-group">
+                    <label>Цена топлива:</label>
+                    <input type="number" step="0.01" name="fuel_price" required>
+                </div>
+                <div class="form-group">
+                    <label>Курс валюты:</label>
+                    <input type="number" step="0.01" name="exchange_rate" required>
+                </div>
+                <div class="form-group">
+                    <label>Индекс спроса:</label>
+                    <input type="number" step="0.01" name="market_demand_index" required>
+                </div>
+                <div class="form-group">
+                    <label>Производственная мощность:</label>
+                    <input type="number" step="0.01" name="production_capacity" required>
+                </div>
+                <input type="submit" value="Спрогнозировать на следующий месяц" class="primary-btn">
+            </form>
+        </div>
+        {% endif %}
+        
+        <!-- Визуализация -->
+        {% if plot_url %}
+        <div class="plot-section">
+            <h2>График данных</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="График продаж">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

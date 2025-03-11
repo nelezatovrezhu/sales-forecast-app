@@ -1,0 +1,14 @@
+﻿date,Дата продажи,datetime
+product_id,Идентификатор продукта (например, Metal_A, Metal_B),object
+sales_volume,Объем продаж,int
+raw_material_price,Цена на сырье,float
+fuel_price,Цена топлива,float
+exchange_rate,Курс валюты,float
+market_demand_index,Индекс рыночного спроса,int
+production_capacity,Производственная мощность,int
+month,Месяц года,int
+is_holiday,Является ли день праздничным,int (0/1)
+season,Сезон,object (winter, spring, summer, fall)
+sales_lag_1,Продажи за предыдущий месяц,float
+sales_lag_3,Продажи за 3 месяца назад,float
+sales_lag_6,Продажи за 6 месяцев назад,float

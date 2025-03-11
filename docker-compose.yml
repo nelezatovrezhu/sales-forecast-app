@@ -1,0 +1,16 @@
+version: '3.8'  # Без кавычек
+
+services:
+  sales-forecast:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./api/static:/app/api/static  # Для example.csv и стиля
+      - ./api/templates:/app/api/templates
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=api/app.py
+    restart: unless-stopped
