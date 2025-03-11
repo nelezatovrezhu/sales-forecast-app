@@ -14,7 +14,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/your-username/sales-forecast-app.git
+   git clone https://github.com/nelezatovrezhu/sales-forecast-app.git
    cd sales-forecast-app
 
 2. Установите зависимости:
